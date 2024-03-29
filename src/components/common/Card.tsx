@@ -20,6 +20,11 @@ const Card = ({ card, isIconVisible = true }: Props) => {
   const { url, title, description, createdAt, imageSource } = card;
   const cardImage = imageSource ? imageSource : noneData;
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = noneData;
+  };
+
   return (
     <div className={cn('card-container')}>
       <CardPopover />
@@ -32,7 +37,7 @@ const Card = ({ card, isIconVisible = true }: Props) => {
         )}
         <a href={url} target="_blank" rel="noreferrer">
           <div className={cn('card-image-content')}>
-            <img className={cn('card-image')} src={cardImage} alt={title + '로 이동하기.'} />
+            <img className={cn('card-image')} src={cardImage} alt={title + '로 이동하기.'} onError={handleImageError} />
           </div>
           <div className={cn('card-content')}>
             <div className={cn('card-interval-date')}>{intervalDate(createdAt)}</div>
