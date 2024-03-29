@@ -7,7 +7,7 @@ export const intervalDate = (value: string) => {
   const createdDate: Date = new Date(value);
   const currentDate: Date = new Date();
 
-  const diffMinute = Math.floor(+currentDate - +createdDate / 1000 / 60);
+  const diffMinute = Math.floor((Number(currentDate) - Number(createdDate)) / 1000 / 60);
   const diffHour = Math.floor(diffMinute / 60);
   const diffDay = Math.floor(diffHour / 24);
   const diffMonth = Math.floor(diffDay / 30);

@@ -20,7 +20,6 @@ export const getSharedUser = async () => {
 };
 
 export const getSharedFolder = async () => {
-  // return getRequest('/sample/folder');
   const response = await getRequest('/sample/folder');
   return response;
 };

@@ -75,7 +75,7 @@ const FolderNav = ({ folderList }: Props) => {
                   key={folder.id}
                   folder={folder}
                   onClickFolder={setSelected}
-                  isSelected={selected && +selected.id === folder.id}
+                  isSelected={selected && Number(selected.id) === folder.id}
                 />
               ))}
             </>
