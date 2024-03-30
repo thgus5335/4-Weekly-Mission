@@ -1,8 +1,17 @@
+.popover-mask {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .card-popover {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   right: -3.75rem;
-  bottom: 1.25rem;
+  bottom: 1.6rem;
   display: flex;
   width: 6.25rem;
   flex-direction: column;

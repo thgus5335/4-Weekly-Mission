@@ -21,7 +21,7 @@ import ModalDelete from '../common/modal/ModalDelete';
 import ModalShare from '../common/modal/ModalShare';
 
 interface Props {
-  folderList?: FolderList[];
+  folderList: FolderList[];
 }
 
 const FolderNav = ({ folderList }: Props) => {
@@ -97,7 +97,6 @@ const FolderNav = ({ folderList }: Props) => {
               {role === ModalRole.EditAdd && <ModalEdit />}
               {role === ModalRole.Share && <ModalShare subTitle={selected?.name} />}
               {role === ModalRole.DeleteFolder && <ModalDelete subTitle={selected?.name} />}
-              {/* {role === 'delete-link' && <ModalDelete subTitle={selected?.name} />} */}
             </Modal>
           </ModalPortal>
         )}
@@ -121,7 +120,7 @@ const FolderNav = ({ folderList }: Props) => {
           </>
         )}
       </div>
-      {folderLink && <CardList folderInfo={folderLink} isIconVisible={true} />}
+      {folderLink && <CardList folderList={folderList} folderInfo={folderLink} isIconVisible={true} />}
     </>
   );
 };

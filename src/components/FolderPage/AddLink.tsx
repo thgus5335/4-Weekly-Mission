@@ -29,7 +29,7 @@ const AddLink = ({ folderList }: Props) => {
   };
 
   const ModalRole = {
-    Add: '폴더 추가',
+    Add: '폴더에 추가',
   };
 
   return (

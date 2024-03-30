@@ -28,6 +28,12 @@
   z-index: 1;
   top: 13rem;
   right: 1.25rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.kebab-icon:hover {
+  filter: invert(80%);
 }
 
 .card-image-content {

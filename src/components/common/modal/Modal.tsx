@@ -2,7 +2,7 @@ import styles from './Modal.module.css';
 import classNames from 'classnames/bind';
 const cn = classNames.bind(styles);
 
-import { MouseEventHandler, ReactNode } from 'react';
+import { MouseEventHandler, ReactNode, useEffect } from 'react';
 
 import buttonClose from '../../../assets/icons/button-close.svg';
 
@@ -13,6 +13,20 @@ interface Props {
 }
 
 const Modal = ({ role, children, onClose }: Props) => {
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = '';
+      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+    };
+  }, []);
+
   return (
     <>
       <div className={cn('modal-mask')} onClick={onClose}></div>

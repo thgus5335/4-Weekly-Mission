@@ -20,6 +20,12 @@
   height: 10rem;
   flex-direction: column;
   gap: 0.2rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.add-folder-list::-webkit-scrollbar {
+  display: none;
 }
 
 .add-folder-item {
