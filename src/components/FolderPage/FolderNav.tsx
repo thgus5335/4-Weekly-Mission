@@ -16,7 +16,6 @@ import iconDelete from '../../assets/icons/delete.svg';
 import iconPlus from '../../assets/icons/plus.svg';
 
 import Modal from '../common/modal/Modal';
-import ModalPortal from '../../utils/Portal';
 import ModalEdit from '../common/modal/ModalEdit';
 import ModalDelete from '../common/modal/ModalDelete';
 import ModalShare from '../common/modal/ModalShare';
@@ -89,14 +88,12 @@ const FolderNav = ({ folderList }: Props) => {
 
       <div className={cn('folder-title')}>
         {openModal && (
-          <ModalPortal>
-            <Modal onClose={handleCloseModal} role={role}>
-              {role === MODAL_ROLE.EDIT_NAME && <ModalEdit />}
-              {role === MODAL_ROLE.EDIT_ADD && <ModalEdit />}
-              {role === MODAL_ROLE.SHARE && <ModalShare subTitle={selected?.name} />}
-              {role === MODAL_ROLE.DELETE_FOLDER && <ModalDelete subTitle={selected?.name} />}
-            </Modal>
-          </ModalPortal>
+          <Modal onClose={handleCloseModal} role={role}>
+            {role === MODAL_ROLE.EDIT_NAME && <ModalEdit />}
+            {role === MODAL_ROLE.EDIT_ADD && <ModalEdit />}
+            {role === MODAL_ROLE.SHARE && <ModalShare subTitle={selected?.name} />}
+            {role === MODAL_ROLE.DELETE_FOLDER && <ModalDelete subTitle={selected?.name} />}
+          </Modal>
         )}
         <h2 className={cn('folder-title', 'folder-name')}>{selected.name}</h2>
         {selected.name !== '전체' && (

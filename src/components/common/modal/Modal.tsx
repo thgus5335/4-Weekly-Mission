@@ -5,6 +5,7 @@ const cn = classNames.bind(styles);
 import { MouseEventHandler, ReactNode, useEffect } from 'react';
 
 import buttonClose from '../../../assets/icons/button-close.svg';
+import ModalPortal from '../../../utils/Portal';
 
 interface Props {
   role: string;
@@ -28,7 +29,7 @@ const Modal = ({ role, children, onClose }: Props) => {
   }, []);
 
   return (
-    <>
+    <ModalPortal>
       <div className={cn('modal-mask')} onClick={onClose}></div>
       <div className={cn('modal-container')} onClick={event => event.stopPropagation()}>
         <h2 className={cn('modal-title')}>{role}</h2>
@@ -37,7 +38,7 @@ const Modal = ({ role, children, onClose }: Props) => {
         </a>
         {children}
       </div>
-    </>
+    </ModalPortal>
   );
 };
 

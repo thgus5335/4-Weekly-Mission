@@ -12,7 +12,6 @@ import iconStar from '../../assets/icons/star-off.svg';
 import iconKebab from '../../assets/icons/kebab.svg';
 
 import CardPopover from '../FolderPage/CardPopover';
-import ModalPortal from '../../utils/Portal';
 import Modal from './modal/Modal';
 import ModalDelete from './modal/ModalDelete';
 import ModalAdd from './modal/ModalAdd';
@@ -57,12 +56,10 @@ const Card = ({ card, folderList, isIconVisible = true }: Props) => {
   return (
     <>
       {openModal && (
-        <ModalPortal>
-          <Modal onClose={handleCloseModal} role={role}>
-            {role === MODAL_ROLE.ADD && <ModalAdd folderList={folderList} />}
-            {role === MODAL_ROLE.DELETE_LINK && <ModalDelete subTitle={url} />}
-          </Modal>
-        </ModalPortal>
+        <Modal onClose={handleCloseModal} role={role}>
+          {role === MODAL_ROLE.ADD && <ModalAdd folderList={folderList} />}
+          {role === MODAL_ROLE.DELETE_LINK && <ModalDelete subTitle={url} />}
+        </Modal>
       )}
       <div className={cn('card-container')}>
         {popover && <CardPopover onOpenModal={handleOpenModal} onClose={handleClosePopover} />}

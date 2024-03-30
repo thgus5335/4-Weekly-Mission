@@ -8,7 +8,6 @@ import { FolderList } from '../../types/type';
 import iconLink from '../../assets/icons/link.svg';
 
 import Modal from '../common/modal/Modal';
-import ModalPortal from '../../utils/Portal';
 import ModalAdd from '../common/modal/ModalAdd';
 
 interface Props {
@@ -35,11 +34,9 @@ const AddLink = ({ folderList }: Props) => {
   return (
     <div className={cn('add-link')}>
       {openModal && (
-        <ModalPortal>
-          <Modal onClose={handleCloseModal} role={role}>
-            {role === ModalRole.Add && <ModalAdd folderList={folderList} />}
-          </Modal>
-        </ModalPortal>
+        <Modal onClose={handleCloseModal} role={role}>
+          {role === ModalRole.Add && <ModalAdd folderList={folderList} />}
+        </Modal>
       )}
       <div className={cn('add-link-content')}>
         <div className={cn('add-link-container')}>
