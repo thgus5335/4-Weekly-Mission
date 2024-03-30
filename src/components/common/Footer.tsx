@@ -2,10 +2,7 @@ import styles from './Footer.module.css';
 import classNames from 'classnames/bind';
 const cn = classNames.bind(styles);
 
-import iconFacebook from '../../assets/icons/facebook.svg';
-import iconTwitter from '../../assets/icons/twitter.svg';
-import iconYoutube from '../../assets/icons/youtube.svg';
-import iconInstagram from '../../assets/icons/instagram.svg';
+import { ICON } from '../../constants/constant';
 
 const Footer = () => {
   const facebook = 'https://www.facebook.com/?locale=ko_KR';
@@ -27,16 +24,16 @@ const Footer = () => {
         </div>
         <div className={cn('footer-icons')}>
           <a href={facebook}>
-            <img className={cn('footer-icon')} src={iconFacebook} alt="페이스북으로 이동하기." />
+            <img className={cn('footer-icon')} src={ICON.FACEBOOK} alt="페이스북으로 이동하기." />
           </a>
           <a href={twitter}>
-            <img className={cn('footer-icon')} src={iconTwitter} alt="트위터로 이동하기." />
+            <img className={cn('footer-icon')} src={ICON.TWITTER} alt="트위터로 이동하기." />
           </a>
           <a href={youtube}>
-            <img className={cn('footer-icon')} src={iconYoutube} alt="유튜브로 이동하기." />
+            <img className={cn('footer-icon')} src={ICON.YOUTUBE} alt="유튜브로 이동하기." />
           </a>
           <a href={instagram}>
-            <img className={cn('footer-icon')} src={iconInstagram} alt="인스타그램으로 이동하기." />
+            <img className={cn('footer-icon')} src={ICON.INSTAGRAM} alt="인스타그램으로 이동하기." />
           </a>
         </div>
       </div>

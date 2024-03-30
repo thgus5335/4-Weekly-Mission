@@ -1,10 +1,9 @@
 import { FolderUser, FolderLink } from '../types/type';
-
-const baseUrl = 'https://bootcamp-api.codeit.kr/api';
+import { BASE_URL } from '../constants/constant';
 
 const getRequest = async (endPoint: string) => {
   try {
-    const response = await fetch(`${baseUrl}${endPoint}`);
+    const response = await fetch(`${BASE_URL}${endPoint}`);
     if (!response.ok) {
       throw new Error(`${endPoint}에서 불러오는데 실패했습니다`);
     }

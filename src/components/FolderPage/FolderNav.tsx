@@ -5,6 +5,7 @@ const cn = classNames.bind(styles);
 import { useState, useEffect } from 'react';
 import { getFolderLink } from '../../apis/api';
 import { FolderList } from '../../types/type';
+import { MODAL_ROLE } from '../../constants/constant';
 
 import Folder from '../common/Folder';
 import CardList from '../common/CardList';
@@ -52,13 +53,6 @@ const FolderNav = ({ folderList }: Props) => {
     handleLoad(selected.id);
   }, [selected.id]);
 
-  const ModalRole = {
-    EditName: '폴더 이름 변경',
-    EditAdd: '폴더 추가',
-    Share: '폴더 공유',
-    DeleteFolder: '폴더 삭제',
-  };
-
   return (
     <>
       <div className={cn('folder-list')}>
@@ -82,7 +76,7 @@ const FolderNav = ({ folderList }: Props) => {
           )}
         </div>
         <div className={cn('add-folder-container')}>
-          <a className={cn('add-folder')} onClick={() => handleOpenModal(ModalRole.EditAdd)}>
+          <a className={cn('add-folder')} onClick={() => handleOpenModal(MODAL_ROLE.EDIT_ADD)}>
             폴더 추가
           </a>
           <img className={cn('add-folder-icon')} src={iconPlus} alt="폴더 추가하기." />
@@ -93,10 +87,10 @@ const FolderNav = ({ folderList }: Props) => {
         {openModal && (
           <ModalPortal>
             <Modal onClose={handleCloseModal} role={role}>
-              {role === ModalRole.EditName && <ModalEdit />}
-              {role === ModalRole.EditAdd && <ModalEdit />}
-              {role === ModalRole.Share && <ModalShare subTitle={selected?.name} />}
-              {role === ModalRole.DeleteFolder && <ModalDelete subTitle={selected?.name} />}
+              {role === MODAL_ROLE.EDIT_NAME && <ModalEdit />}
+              {role === MODAL_ROLE.EDIT_ADD && <ModalEdit />}
+              {role === MODAL_ROLE.SHARE && <ModalShare subTitle={selected?.name} />}
+              {role === MODAL_ROLE.DELETE_FOLDER && <ModalDelete subTitle={selected?.name} />}
             </Modal>
           </ModalPortal>
         )}
@@ -105,15 +99,15 @@ const FolderNav = ({ folderList }: Props) => {
           <>
             <div className={cn('folder-menu')}>
               <img className={cn('folder-menu-icon')} src={iconShare} alt="폴더 공유하기." />
-              <a className={cn('folder-menu-text')} onClick={() => handleOpenModal(ModalRole.Share)}>
+              <a className={cn('folder-menu-text')} onClick={() => handleOpenModal(MODAL_ROLE.SHARE)}>
                 공유
               </a>
               <img className={cn('folder-menu-icon')} src={iconPen} alt="폴더 이름 변경하기." />
-              <a className={cn('folder-menu-text')} onClick={() => handleOpenModal(ModalRole.EditName)}>
+              <a className={cn('folder-menu-text')} onClick={() => handleOpenModal(MODAL_ROLE.EDIT_NAME)}>
                 이름 변경
               </a>
               <img className={cn('folder-menu-icon')} src={iconDelete} alt="폴더 삭제하기." />
-              <a className={cn('folder-menu-text')} onClick={() => handleOpenModal(ModalRole.DeleteFolder)}>
+              <a className={cn('folder-menu-text')} onClick={() => handleOpenModal(MODAL_ROLE.DELETE_FOLDER)}>
                 삭제
               </a>
             </div>

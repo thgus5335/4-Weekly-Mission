@@ -5,6 +5,7 @@ const cn = classNames.bind(styles);
 import { createDate, intervalDate } from '../../utils/Date';
 import { FolderLink, FolderList, Link } from '../../types/type';
 import { useState } from 'react';
+import { MODAL_ROLE } from '../../constants/constant';
 
 import noneData from '../../assets/images/none-data.png';
 import iconStar from '../../assets/icons/star-off.svg';
@@ -53,18 +54,13 @@ const Card = ({ card, folderList, isIconVisible = true }: Props) => {
     setOpenModal(false);
   };
 
-  const ModalRole = {
-    Add: '폴더에 추가',
-    DeleteLink: '링크 삭제',
-  };
-
   return (
     <>
       {openModal && (
         <ModalPortal>
           <Modal onClose={handleCloseModal} role={role}>
-            {role === ModalRole.Add && <ModalAdd folderList={folderList} />}
-            {role === ModalRole.DeleteLink && <ModalDelete subTitle={url} />}
+            {role === MODAL_ROLE.ADD && <ModalAdd folderList={folderList} />}
+            {role === MODAL_ROLE.DELETE_LINK && <ModalDelete subTitle={url} />}
           </Modal>
         </ModalPortal>
       )}
