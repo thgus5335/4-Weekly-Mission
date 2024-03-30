@@ -40,6 +40,10 @@ const FolderNav = ({ folderList }: Props) => {
     setOpenModal(false);
   };
 
+  const handleSelected = (id: string, name: string) => {
+    setSelected({ id, name });
+  };
+
   const handleLoad = async (folderId: string) => {
     try {
       const state = await getFolderLink(folderId);
@@ -68,7 +72,7 @@ const FolderNav = ({ folderList }: Props) => {
                 <Folder
                   key={folder.id}
                   folder={folder}
-                  onClickFolder={setSelected}
+                  onClickFolder={handleSelected}
                   isSelected={selected && Number(selected.id) === folder.id}
                 />
               ))}

@@ -6,19 +6,14 @@ import { FolderList } from '../../types/type';
 
 interface Props {
   folder: FolderList;
-  onClickFolder: React.Dispatch<
-    React.SetStateAction<{
-      id: string | number;
-      name: string;
-    }>
-  >;
   isSelected: boolean;
+  onClickFolder: (id: string, name: string) => void;
 }
 
-const Folder = ({ folder, onClickFolder, isSelected }: Props) => {
-  const { id, name } = folder;
+const Folder = ({ folder, isSelected, onClickFolder }: Props) => {
+  const { name } = folder;
   return (
-    <a className={cn('folder', isSelected ? 'folder-selected' : '')} onClick={() => onClickFolder({ id, name })}>
+    <a className={cn('folder', isSelected ? 'folder-selected' : '')} onClick={() => onClickFolder}>
       {name}
     </a>
   );
